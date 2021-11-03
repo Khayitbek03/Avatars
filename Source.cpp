@@ -45,13 +45,38 @@ void body(char arm, int torso_len) {
 }
 
 
+void leg(int height) {
+	cout << "      HHHHH" << endl;
+	int left_space = 5;
+	int between_space = 1;
+
+	for (int i = 1; i <= height; i++) {
+		int now_space = 1;
+		while (now_space <= left_space) {
+			cout << " ";
+			now_space++;
+		}
+		cout << "///";
+		int between_now = 1;
+		while (between_now <= between_space) {
+			cout << " ";
+			between_now++;
+		}
+		cout << "\\\\\\" << endl;
+		left_space = left_space - 1;
+		between_space = between_space + 2;
+	}
+}
+
+
+
 int main() {
-	int hat_dir, torso;
+	int hat_dir, torso, leg_height;
 	char eye, hair, arm;
-	
+
 	cout << "Welcome to AVATARS program" << endl << "To start select avatar or create your own: " << endl;
 	cout << "1) Jeff \n2) Jane \n3) Chris \n4) Custom" << endl;
-	
+
 	cout << "Choose hat direction:\n 1)Left\n 2)Right\n 3)Both\n 4)Front" << endl;
 	cin >> hat_dir;
 	cout << "Long hair? (t/f): ";
@@ -62,11 +87,15 @@ int main() {
 	cin >> arm;
 	cout << "Torso length: ";
 	cin >> torso;
+	cout << "Leg height?";
+	cin >> leg_height;
+
 
 	hat(hat_dir);
 	face(hair, eye);
 	body(arm, torso);
-	
+	leg(leg_height);
+
 
 	return 0;
 }
